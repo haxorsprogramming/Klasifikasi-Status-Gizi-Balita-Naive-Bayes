@@ -1,1 +1,62 @@
-adsa
+{% extends "layout/base.html" %}
+
+{% block contents %}
+<div class="container" style="margin-top: 30px;">
+   <h4>Data Balita (Konversi Nilai Normalisasi)</h4>
+   <hr/>
+   <div class="row">
+        <table class="table table-bordered" id="tblBalita" style="font-size: 13px;">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nama Balita</th>
+                    <th>Jenis Kelamin</th>
+                    <th>Usia</th>
+                    <th>Berat Badan</th>
+                    <th>Tinggi Badan</th>
+                    <th>LiLA</th>
+                    <th>Kelas Gizi</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                {% for balita in dBalita %}
+                <tr>
+                    <td>{{ balita.ord }}</td>
+                    <td>{{ balita.nama }}</td>
+                    <td>{{ balita.jk }}</td>
+                    <td>{{ balita.usia }}</td>
+                    <td>{{ balita.berat_badan }}</td>
+                    <td>{{ balita.tinggi_badan }}</td>
+                    <td>{{ balita.lila }}</td>
+                    <td>{{ balita.kelas_gizi }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+   </div>
+   <hr/>
+   <h4>Representasi sebaran data</h4>
+   <hr/>
+   <div class="row">
+    <label>Jenis Kelamin</label>
+    <ul>
+        <li>Laki Laki : {{ rpJk.JK1 }}</li> 
+        <li>Perempuan : {{ rpJk.JK2 }}</li> 
+    </ul>
+    <br/>
+    <label>Usia</label>
+    <ul>
+        <li>Usia 1 : {{ rpUsia.U1 }}</li> 
+        <li>Usia 2 : {{ rpUsia.U2}}</li> 
+        <li>Usia 3 : {{ rpUsia.U3 }}</li> 
+        <li>Usia 4 : {{ rpUsia.U4 }}</li> 
+        <li>Usia 5 : {{ rpUsia.U5 }}</li> 
+    </ul>
+   </div>
+</div>
+
+<script>
+    $("#tblBalita").dataTable();
+</script>
+{% endblock contents %}
