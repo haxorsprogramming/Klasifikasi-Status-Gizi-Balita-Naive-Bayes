@@ -1,1 +1,44 @@
 {% extends "layout/base.html" %}
+
+{% block contents %}
+<div class="container" style="margin-top: 30px;">
+    <h4>Proses Klasifikasi</h4>
+    <small>Silahkan input data pengujian</small>
+    <hr/>
+    <div class="row">
+        <div class="col-6 col-lg-6">
+            <div class="form-group">
+                <label>Nama Balita</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Jenis Kelamin</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Usia</label>
+                <input type="text" class="form-control">
+            </div>
+            
+        </div>
+        <div class="col-6 col-lg-6">
+            <div class="form-group">
+                <label>Berat Badan</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Tinggi Badan</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>LiLA</label>
+                <input type="text" class="form-control">
+            </div>
+            
+        </div>
+    </div>
+    <div style="text-align: center;margin-top:20px;">
+        <a href="javascript:void(0)" class="btn btn-lg btn-primary">Proses prediksi naive bayes</a>
+    </div>
+</div>
+{% endblock contents %}
