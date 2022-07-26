@@ -49,7 +49,7 @@ def data_latih():
     rpUsia = {'U1':0,'U2':0,'U3':0,'U4':0,'U5':0, 'total':0}
     rpBb = {'BB1':0,'BB2':0,'BB3':0,'BB4':0,'BB5':0,'BB6':0,'BB7':0,'BB8':0,'BB9':0,'BB10':0, 'total':0}
     rpTb = {'TB1':0,'TB2':0,'TB3':0,'TB4':0,'TB5':0,'TB6':0,'TB7':0,'TB8':0,'TB9':0,'TB10':0, 'total':0}
-
+    rpLl = {'LL1':0,'LL2':0,'LL3':0,'LL4':0,'LL5':0,'total':0}
     for x in dbnp:
         # print(x[6])
         dSatuan = {}
@@ -121,16 +121,31 @@ def data_latih():
             rpTb['TB9'] += 1
         else:
             rpTb['TB10'] += 1
+        # normalisasi ll
+        if x[5] == 1:
+            rpLl['LL1'] += 1
+        elif x[5] == 2:
+            rpLl['LL2'] += 1
+        elif x[5] == 3:
+            rpLl['LL3'] += 1
+        elif x[5] == 4:
+            rpLl['LL4'] += 1
+        else:
+            rpLl['LL5'] += 1
     # total 
     rpJk['total'] = rpJk['JK1'] + rpJk['JK2']
     rpUsia['total'] = rpUsia['U1'] + rpUsia['U2'] + rpUsia['U3'] + rpUsia['U4'] + rpUsia['U5']
     rpBb['total'] = rpBb['BB1'] + rpBb['BB2'] + rpBb['BB3'] + rpBb['BB4'] + rpBb['BB5'] + rpBb['BB6'] + rpBb['BB7'] + rpBb['BB8'] + rpBb['BB9'] + rpBb['BB10']
+    rpTb['total'] = rpTb['TB1'] + rpTb['TB2'] + rpTb['TB3'] + rpTb['TB4'] + rpTb['TB5'] + rpTb['TB6'] + rpTb['TB7'] + rpTb['TB8'] + rpTb['TB9'] + rpTb['TB10']
+    rpLl['total'] = rpLl['LL1'] + rpLl['LL2'] + rpLl['LL3'] + rpLl['LL4'] + rpLl['LL5']
+    return render_template('data-latih.html', dBalita=dBalita, rpJk=rpJk, rpUsia=rpUsia, rpBb=rpBb, rpTb=rpTb, rpLl=rpLl)
 
-    return render_template('data-latih.html', dBalita=dBalita, rpJk=rpJk, rpUsia=rpUsia, rpBb=rpBb)
+@app.route('/data-validasi')
+def data_validasi():
+    return render_template('data-validasi.html')
 
 @app.route('/proses-klasifikasi')
 def proses_klasifikasi():
-
     return render_template('proses-klasifikasi.html')
 
 @app.route('/hasil-klasifikasi')

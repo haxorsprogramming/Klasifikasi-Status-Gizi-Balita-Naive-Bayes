@@ -9,22 +9,42 @@
         <div class="col-6 col-lg-6">
             <div class="form-group">
                 <label>Nama Balita</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" id="txtNamaBalita">
             </div>
             <div class="form-group">
                 <label>Jenis Kelamin</label>
-                <input type="text" class="form-control">
+                <select class="form-control" id="txtJk">
+                    <option value="1">Laki Laki</option>
+                    <option value="2">Perempuan</option>
+                </select>
             </div>
             <div class="form-group">
                 <label>Usia</label>
-                <input type="text" class="form-control">
+                <select class="form-control" id="txtUsia">
+                    <option value="1">U1</option>
+                    <option value="2">U2</option>
+                    <option value="3">U3</option>
+                    <option value="4">U4</option>
+                    <option value="5">U5</option>
+                </select>
             </div>
             
         </div>
         <div class="col-6 col-lg-6">
             <div class="form-group">
                 <label>Berat Badan</label>
-                <input type="text" class="form-control">
+                <select class="form-control" id="txtUsia">
+                    <option value="1">BB1</option>
+                    <option value="2">BB2</option>
+                    <option value="3">BB3</option>
+                    <option value="4">BB4</option>
+                    <option value="5">BB5</option>
+                    <option value="6">BB6</option>
+                    <option value="7">BB7</option>
+                    <option value="8">BB8</option>
+                    <option value="9">BB9</option>
+                    <option value="10">BB10</option>
+                </select>
             </div>
             <div class="form-group">
                 <label>Tinggi Badan</label>
@@ -41,4 +61,7 @@
         <a href="javascript:void(0)" class="btn btn-lg btn-primary">Proses prediksi naive bayes</a>
     </div>
 </div>
+<script>
+    document.querySelector("#txtNamaBalita").focus();
+</script>
 {% endblock contents %}
