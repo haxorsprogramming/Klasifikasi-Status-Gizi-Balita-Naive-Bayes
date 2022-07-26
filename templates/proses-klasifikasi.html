@@ -5,22 +5,25 @@
     <h4>Proses Klasifikasi</h4>
     <small>Silahkan input data pengujian</small>
     <hr/>
+    <form method="post" action="{{ BASE_URL }}/hasil-klasifikasi" id="frmProses">
     <div class="row">
+        
         <div class="col-6 col-lg-6">
+            
             <div class="form-group">
                 <label>Nama Balita</label>
-                <input type="text" class="form-control" id="txtNamaBalita">
+                <input type="text" class="form-control" id="txtNamaBalita" name="txtNamaBalita" required>
             </div>
             <div class="form-group">
                 <label>Jenis Kelamin</label>
-                <select class="form-control" id="txtJk">
+                <select class="form-control" id="txtJk" name="txtJenisKelamin">
                     <option value="1">Laki Laki</option>
                     <option value="2">Perempuan</option>
                 </select>
             </div>
             <div class="form-group">
                 <label>Usia</label>
-                <select class="form-control" id="txtUsia">
+                <select class="form-control" id="txtUsia" name="txtUsia">
                     <option value="1">U1</option>
                     <option value="2">U2</option>
                     <option value="3">U3</option>
@@ -33,7 +36,7 @@
         <div class="col-6 col-lg-6">
             <div class="form-group">
                 <label>Berat Badan</label>
-                <select class="form-control" id="txtBeratBadan">
+                <select class="form-control" id="txtBeratBadan" name="txtBeratBadan">
                     <option value="1">BB1</option>
                     <option value="2">BB2</option>
                     <option value="3">BB3</option>
@@ -48,7 +51,7 @@
             </div>
             <div class="form-group">
                 <label>Tinggi Badan</label>
-                <select class="form-control" id="txtTinggiBadan">
+                <select class="form-control" id="txtTinggiBadan" name="txtTinggiBadan">
                     <option value="1">TB1</option>
                     <option value="2">TB2</option>
                     <option value="3">TB3</option>
@@ -63,7 +66,7 @@
             </div>
             <div class="form-group">
                 <label>Lingkar Lengan</label>
-                <select class="form-control" id="txtUsia">
+                <select class="form-control" id="txtLingkarLengan" name="txtLingkarLengan">
                     <option value="1">LL1</option>
                     <option value="2">LL2</option>
                     <option value="3">LL3</option>
@@ -73,12 +76,13 @@
             </div>
             
         </div>
+        <button type="submit" class="btn btn-lg btn-primary" style="margin-top: 20px;">Proses prediksi naive bayes</a>
     </div>
-    <div style="text-align: center;margin-top:20px;">
-        <a href="javascript:void(0)" class="btn btn-lg btn-primary">Proses prediksi naive bayes</a>
-    </div>
+</form>
 </div>
 <script>
     document.querySelector("#txtNamaBalita").focus();
+
+    
 </script>
 {% endblock contents %}

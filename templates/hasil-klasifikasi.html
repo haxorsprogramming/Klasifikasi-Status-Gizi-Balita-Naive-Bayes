@@ -1,1 +1,90 @@
 {% extends "layout/base.html" %}
+
+{% block contents %}
+<div class="container" style="margin-top: 30px;">
+    <h4>Hasil Klasifikasi Naive Bayes</h4>
+    <hr/>
+    <div style="text-align: center;">
+        <img src="https://s3.jagoanstorage.com/aditia-storage/asset/ilustrasi/t031-04.jpg" style="width: 500px;">
+    </div>
+    <div class="row">
+        <div class="col-6 col-lg-6">
+            <div class="form-group">
+                <label>Nama Balita</label><br/>
+                <span style="font-size: 20px;">{{ dr.nama }}</span>
+            </div>
+            <div class="form-group">
+                <label>Jenis Kelamin</label><br/>
+                <span style="font-size: 20px;">{{ dr.jk }}</span>
+            </div>
+            <div class="form-group">
+                <label>Usia</label><br/>
+                <span style="font-size: 20px;">{{ dr.usia }}</span>
+            </div>
+        </div>
+        <div class="col-6 col-lg-6">
+            <div class="form-group">
+                <label>Tinggi Badan</label><br/>
+                <span style="font-size: 20px;">{{ dr.tb }}</span>
+            </div>
+            <div class="form-group">
+                <label>Berat Badan</label><br/>
+                <span style="font-size: 20px;">{{ dr.bb }}</span>
+            </div>
+            <div class="form-group">
+                <label>Lingkar Lengan</label><br/>
+                <span style="font-size: 20px;">{{ dr.ll }}</span>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <h4>Penyelesaian</h4>
+    <hr/>
+    <h5>1. Hitung Probabilitas Tiap Class</h5>
+    <pre>
+        Hitung Probabilitas Tiap Cluster		
+        Gizi Lebih	Jml Training	Probabitas
+        Gizi Baik	1114,00	0,142857143
+        Gizi Kurang	1114,00	0,142857143
+        Gizi Buruk	1114,00	0,142857143
+
+    </pre>
+    <hr/>
+    <h5>2. Mean & Median Tiap Class</h5>
+    <pre>
+        Cluster	C1	C2	C3	C4
+        Gizi Lebih	32,8	32,2	32	33,2
+        Gizi Baik	64,2	63,4	64,2	64
+        Gizi Kurang	23,4	25,6	24,6	24
+        Gizi Buruk	44,2	45,8	43,4	43,4
+
+    </pre>
+    <hr/>
+    <h5>3. Standart Deviasi Tiap Class</h5>
+    <pre>
+        Cluster	C1	C2	C3	C4
+        Gizi Lebih	32,8	32,2	32	33,2
+        Gizi Baik	64,2	63,4	64,2	64
+        Gizi Kurang	23,4	25,6	24,6	24
+        Gizi Buruk	44,2	45,8	43,4	43,4
+    </pre>
+    <hr/>
+    <h5>4. Normalisasi Distribusi Class</h5>
+    <pre>
+        Cluster	C1	C2	C3	C4
+        Gizi Lebih	0,95848178	0,971481704	0,973657873	0,955434537
+        Gizi Baik	0,656571865	0,692021073	0,679258027	0,663441871
+        Gizi Kurang	0,997239915	0,99724839	0,99724839	0,998210376
+        Gizi Buruk	0,851041129	0,857592471	0,880351187	0,860333337
+    </pre>
+    <hr/>
+    <h5>5. Probabilitas Naive Bayes</h5>
+    <pre>
+        Dataset	Cluster	Data Uji	Hasil
+        132	Gizi Lebih	370	370
+        255	Gizi Baik		        Gizi Baik
+        97	Gizi Kurang		
+        177	Gizi Buruk		
+    </pre>
+</div>
+{% endblock contents %}

@@ -1,5 +1,6 @@
 from flask import Flask, redirect, url_for, render_template, request, jsonify 
 import pandas as pd
+import json
 
 app = Flask(__name__)
 
@@ -144,14 +145,42 @@ def data_latih():
 def data_validasi():
     return render_template('data-validasi.html')
 
+# @app.route('/proses-klasifikasi')
 @app.route('/proses-klasifikasi')
 def proses_klasifikasi():
     return render_template('proses-klasifikasi.html')
 
-@app.route('/hasil-klasifikasi')
+@app.route('/hasil-klasifikasi', methods=('GET', 'POST'))
 def hasil():
+    nama = request.form['txtNamaBalita']
+    jk = request.form['txtJenisKelamin']
+    bb = request.form['txtBeratBadan']
+    tb = request.form['txtTinggiBadan']
+    usia = request.form['txtUsia']
+    ll = request.form['txtLingkarLengan']
 
-    return render_template('hasil-klasifikasi.html')
+    # save data to json 
+    aDict = {"nama":nama, "jk":jk, "bb":bb, "tb":tb, "usia":usia, "ll":ll}
+    jsonString = json.dumps(aDict)
+    jsonFile = open("process.json", "w")
+    jsonFile.write(jsonString)
+    jsonFile.close()
+
+    # read json 
+    fileObject = open("process.json", "r")
+    jsonContent = fileObject.read()
+    aList = json.loads(jsonContent)
+
+    nama = aList['nama']
+    jk = aList['jk']
+    bb = aList['bb']
+    tb = aList['tb']
+    usia = aList['usia']
+    ll = aList['ll']
+
+    dr = {'nama':nama, 'jk':jk, 'bb':bb, 'tb':tb, 'usia':usia, 'll':ll}
+
+    return render_template('hasil-klasifikasi.html', dr=dr)
 
 # if __name__ == '__main__':
 app.run(host='0.0.0.0', port=7001)
