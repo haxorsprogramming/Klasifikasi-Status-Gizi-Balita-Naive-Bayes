@@ -1,6 +1,8 @@
 from flask import Flask, redirect, url_for, render_template, request, jsonify 
 import pandas as pd
 import json
+import numpy as np
+import random
 
 app = Flask(__name__)
 
@@ -178,7 +180,22 @@ def hasil():
     usia = aList['usia']
     ll = aList['ll']
 
-    dr = {'nama':nama, 'jk':jk, 'bb':bb, 'tb':tb, 'usia':usia, 'll':ll}
+    # dHasil = [0,1,2,3]
+    terpilih = ""
+    inPil = random.randint(0, 3)
+    print(inPil)
+    if inPil == 0:
+        terpilih = "Gizi Lebih"
+    if inPil == 1:
+        terpilih = "Gizi Baik"
+    if inPil == 2:
+        terpilih = "Gizi Kurang"
+    if inPil == 3:
+        terpilih = "Gizi Buruk"
+
+    # terpilih = dHasil[inPil]
+
+    dr = {'nama':nama, 'jk':jk, 'bb':bb, 'tb':tb, 'usia':usia, 'll':ll, 'hasil':terpilih}
 
     return render_template('hasil-klasifikasi.html', dr=dr)
 

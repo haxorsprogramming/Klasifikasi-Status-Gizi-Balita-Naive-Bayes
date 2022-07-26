@@ -82,9 +82,13 @@
     <pre>
         Dataset	Cluster	Data Uji	Hasil
         132	Gizi Lebih	370	370
-        255	Gizi Baik		        Gizi Baik
+        255	Gizi Baik		         <h2>{{ dr.hasil }}</h2>
         97	Gizi Kurang		
         177	Gizi Buruk		
     </pre>
+    <div style="text-align: center;">
+        <h3>Hasil prediksi naive bayes untuk gizi bayi</h3>
+        <h2>{{ dr.hasil }}</h2>
+    </div>
 </div>
 {% endblock contents %}
