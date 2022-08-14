@@ -164,6 +164,79 @@ def hasil():
     usia = request.form['txtUsia']
     ll = request.form['txtLingkarLengan']
 
+    at = usia[0:2]
+    # print(int(ambilTahun))
+
+    cbb = 0
+    ctb = 0
+    cll = 0
+    cu = 0
+
+    if int(at) >= 0:
+        cu = 1
+    if int(at) >= 1:
+        cu = 2
+    if int(at) >= 2:
+        cu = 3
+    if int(at) >= 3:
+        cu = 4
+    if int(at) >= 4:
+        cu = 5
+
+    if int(ll) >= 1 and int(ll) <= 5:
+        cll = 1
+    if int(ll) >= 6 and int(ll) <= 10:
+        cll = 2
+    if int(ll) >= 11 and int(ll) <= 15:
+        cll = 3
+    if int(ll) >= 16 and int(ll) <= 20:
+        cll = 4
+    if int(ll) >= 21 and int(ll) <= 25:
+        cll = 5
+
+    if int(bb) >= 0 and int(bb) <= 3:
+        cbb = 1
+    if int(bb) >= 4 and int(bb) <= 6:
+        cbb = 2
+    if int(bb) >= 7 and int(bb) <= 9:
+        cbb = 3
+    if int(bb) >= 10 and int(bb) <= 12:
+        cbb = 4
+    if int(bb) >= 13 and int(bb) <= 15:
+        cbb = 5
+    if int(bb) >= 16 and int(bb) <= 18:
+        cbb = 6
+    if int(bb) >= 19 and int(bb) <= 21:
+        cbb = 7
+    if int(bb) >= 22 and int(bb) <= 24:
+        cbb = 8
+    if int(bb) >= 25 and int(bb) <= 27:
+        cbb = 9
+    if int(bb) >= 28 and int(bb) <= 30:
+        cbb = 10
+
+    if int(tb) > 0 and int(tb) < 20:
+        ctb = 1
+    if int(tb) > 21 and int(tb) < 30:
+        ctb = 2
+    if int(tb) > 31 and int(tb) < 40:
+        ctb = 3
+    if int(tb) > 41 and int(tb) < 50:
+        ctb = 4
+    if int(tb) > 52 and int(tb) < 60:
+        ctb = 5
+    if int(tb) > 61 and int(tb) < 70:
+        ctb = 6
+    if int(tb) > 71 and int(tb) < 80:
+        ctb = 7
+    if int(tb) > 81 and int(tb) < 90:
+        ctb = 8
+    if int(tb) > 91 and int(tb) < 100:
+        ctb = 9
+    if int(tb) > 101 and int(tb) < 110:
+        ctb = 10
+    
+
     # Make a prediction with Naive Bayes on Iris Dataset
     filename = 'data/training.csv'
     dataset = load_csv(filename)
@@ -175,7 +248,7 @@ def hasil():
     # fit model
     model = summarize_by_class(dataset)
     # define a new record
-    row = [1,5,4,9,3]
+    row = [int(jk),int(cu),int(cbb),int(ctb),int(cll)]
     # predict the label
     label = predict(model, row)
     # return label
