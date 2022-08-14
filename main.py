@@ -1,8 +1,11 @@
+import imp
 from flask import Flask, redirect, url_for, render_template, request, jsonify 
 import pandas as pd
 import json
 import numpy as np
 import random
+# from csv import reader
+from fungsi import predict, str_column_to_float, str_column_to_int, summarize_by_class, load_csv
 
 app = Flask(__name__)
 
@@ -161,43 +164,39 @@ def hasil():
     usia = request.form['txtUsia']
     ll = request.form['txtLingkarLengan']
 
-    # save data to json 
-    aDict = {"nama":nama, "jk":jk, "bb":bb, "tb":tb, "usia":usia, "ll":ll}
-    jsonString = json.dumps(aDict)
-    jsonFile = open("process.json", "w")
-    jsonFile.write(jsonString)
-    jsonFile.close()
+    # Make a prediction with Naive Bayes on Iris Dataset
+    filename = 'data/training.csv'
+    dataset = load_csv(filename)
+    for i in range(len(dataset[0])-1):
+        str_column_to_float(dataset, i)
+    # convert class column to integers
+    dClass = str_column_to_int(dataset, len(dataset[0])-1)
+    str_column_to_int(dataset, len(dataset[0])-1)
+    # fit model
+    model = summarize_by_class(dataset)
+    # define a new record
+    row = [1,5,4,9,3]
+    # predict the label
+    label = predict(model, row)
+    # return label
+    # print('Data=%s, Predicted: %s' % (row, label))
 
-    # read json 
-    fileObject = open("process.json", "r")
-    jsonContent = fileObject.read()
-    aList = json.loads(jsonContent)
+    # predict()
 
-    nama = aList['nama']
-    jk = aList['jk']
-    bb = aList['bb']
-    tb = aList['tb']
-    usia = aList['usia']
-    ll = aList['ll']
-
-    # dHasil = [0,1,2,3]
-    terpilih = ""
-    inPil = random.randint(0, 3)
-    print(inPil)
-    if inPil == 0:
-        terpilih = "Gizi Lebih"
-    if inPil == 1:
-        terpilih = "Gizi Baik"
-    if inPil == 2:
-        terpilih = "Gizi Kurang"
-    if inPil == 3:
-        terpilih = "Gizi Buruk"
-
-    # terpilih = dHasil[inPil]
-
-    dr = {'nama':nama, 'jk':jk, 'bb':bb, 'tb':tb, 'usia':usia, 'll':ll, 'hasil':terpilih}
-
-    return render_template('hasil-klasifikasi.html', dr=dr)
+    hasil = ""
+    if dClass['GiziBaik'] == label:
+        hasil = "Gizi Baik"
+    if dClass['GiziBuruk'] == label:
+        hasil = "Gizi Buruk"
+    if dClass['GiziKurang'] == label:
+        hasil = "Gizi Kurang"
+    if dClass['GiziLebih'] == label:
+        hasil = "Gizi Lebih"
+    # print(dClass['GiziBaik'])
+    
+    data = {'status':label, 'class' : dClass, 'hasil':hasil}
+    # return jsonify(data)
+    return render_template('hasil-klasifikasi.html', dr=data)
 
 # if __name__ == '__main__':
 app.run(host='0.0.0.0', port=7001)
