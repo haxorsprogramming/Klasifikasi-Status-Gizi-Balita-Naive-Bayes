@@ -20,7 +20,7 @@ Catatan
 - Aplikasi ini dapat dikembangkan kembali, namun tidak ditujukan untuk kebutuhan komersial, segala kesalahan analisa data, bug, dll tidak menjadi tanggung jawab pengembang awal
 - Jika ada pertanyaan dapat menghubungi email : <code>alditha.forum@gmail.com</code>
 
-========================= SPIRIT OF COLLABORATIVE, NEVER STOP CODE ============================
+
 
 Informasi pengembang
 
