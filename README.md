@@ -1,5 +1,22 @@
 # Klasifikasi-Status-Gizi-Balita-Naive-Bayes
 
+Tampilan Aplikasi 
+- Homepage
+<img src="https://s3.jagoanstorage.com/aditia-storage/asset/ss_program/Klasifikasi-Status-Gizi-Balita-Naive-Bayes/1.png">
+
+- Data Balita
+<img src="https://s3.jagoanstorage.com/aditia-storage/asset/ss_program/Klasifikasi-Status-Gizi-Balita-Naive-Bayes/2.png">
+
+- Form Pengujian
+<img src="https://s3.jagoanstorage.com/aditia-storage/asset/ss_program/Klasifikasi-Status-Gizi-Balita-Naive-Bayes/3.png">
+
+- Hasil Pengujian 1
+<img src="https://s3.jagoanstorage.com/aditia-storage/asset/ss_program/Klasifikasi-Status-Gizi-Balita-Naive-Bayes/4.png">
+
+- Hasil Pengujian 2
+<img src="https://s3.jagoanstorage.com/aditia-storage/asset/ss_program/Klasifikasi-Status-Gizi-Balita-Naive-Bayes/5.png">
+
+
 Stack
 - Flask (Python)
 - Pandas
